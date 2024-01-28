@@ -8,12 +8,7 @@ import {
 } from 'sequelize-typescript';
 import { Role } from '../constants/role';
 import { Capabilibities } from '../constants/capabilities';
-
-interface RoleInterface {
-  id: string;
-  role: Role;
-  capabilities: Capabilibities[];
-}
+import { RoleInterface } from '../types/model/interfaces';
 
 type RoleCreateOptions = Optional<RoleInterface, 'id'>;
 
@@ -33,11 +28,11 @@ class Roles extends Model<RoleInterface, RoleCreateOptions> {
   })
   role!: Role;
 
-  @Column({
-    type: DataType.ARRAY(DataType.ENUM(...Object.values(Capabilibities))),
-    allowNull: false,
-  })
-  capabilities!: Capabilibities[];
+  // @Column({
+  //   type: DataType.ARRAY(DataType.ENUM(...Object.values(Capabilibities))),
+  //   allowNull: false,
+  // })
+  // capabilities!: Capabilibities[];
 }
 
 export default Roles;

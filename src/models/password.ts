@@ -6,12 +6,7 @@ import {
   PrimaryKey,
   Table,
 } from 'sequelize-typescript';
-
-interface PasswordInterface {
-  id: string;
-  hash: string;
-  salt: number;
-}
+import { PasswordInterface } from '../types/model/interfaces';
 
 type PasswordInputInterface = Optional<PasswordInterface, 'id'>;
 
@@ -32,9 +27,9 @@ class Password extends Model<PasswordInterface, PasswordInputInterface> {
   hash!: string;
 
   @Column({
-    type: DataType.INTEGER,
+    type: DataType.STRING,
     allowNull: false,
   })
-  salt!: number;
+  salt!: string;
 }
 export default Password;

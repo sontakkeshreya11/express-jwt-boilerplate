@@ -6,14 +6,7 @@ import {
   DataType,
   PrimaryKey,
 } from 'sequelize-typescript';
-
-interface UserInterface {
-  id?: string;
-  first_name: string;
-  last_name: string;
-  email: string;
-  password_id: string;
-}
+import { UserInterface } from '../types/model/interfaces';
 
 type UserCreateOptions = Optional<UserInterface, 'id'>;
 
@@ -46,9 +39,9 @@ class User extends Model<UserInterface, UserCreateOptions> {
   email!: string;
 
   @Column({
-    type: DataType.INTEGER,
+    type: DataType.UUID,
     allowNull: true,
   })
-  password_id!: number;
+  password_id!: string;
 }
 export default User;

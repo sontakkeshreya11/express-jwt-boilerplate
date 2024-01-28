@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import { Config } from './types/config';
+import { Config } from './src/types/config';
 
 dotenv.config({
   path:
@@ -7,7 +7,12 @@ dotenv.config({
 });
 
 export const config: Config = {
-  NODE_ENV: process.env.NODE_ENV || 'development',
-  HOST: process.env.HOST || 'localhost',
-  PORT: Number(process.env.PORT) || 3000,
+  nodeEnv: process.env.NODE_ENV || 'development',
+  host: process.env.HOST || 'localhost',
+  port: Number(process.env.PORT) || 3000,
+  dbName: process.env.DB_NAME || '',
+  dbPassword: process.env.DB_PASS || '',
+  dbPort: Number(process.env.DB_PORT) || 0,
+  dbUser: process.env.DB_USER || '',
+  dbHost: process.env.DB_HOST || '',
 };
